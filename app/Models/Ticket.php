@@ -23,7 +23,7 @@ class Ticket extends Model
     para el Event.
      */
     public function event() {
-        return this->belongsTo(Event::class);
+        return $this->belongsTo(Event::class);
     }
 
 }

@@ -18,4 +18,8 @@ class Customer extends Model
         return $this->hasMany(Purchase::class);
     }
 
+    public function tickets(){
+        return $this->hasManyThrough(Ticket::class, Purchase::class);
+    }
+
 }

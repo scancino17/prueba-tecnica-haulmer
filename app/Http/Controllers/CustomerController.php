@@ -6,6 +6,8 @@ use App\Models\Customer;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
+use App\Http\Resources\CustomerResource;
+
 class CustomerController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return Customer::all();
     }
 
     /**
@@ -35,9 +37,10 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show(Customer $order)
     {
-        //
+        $order->loadMissing('purchases');
+        return new CustomerResource($order);
     }
 
     /**

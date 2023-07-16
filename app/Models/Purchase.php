@@ -23,7 +23,7 @@ class Purchase extends Model
     En una compra pueden haber sido comprado varios tickets.
      */
     public function tickets() {
-        return this->hasMany(Ticket::class);
+        return $this->hasMany(Ticket::class);
     }
 
 }
