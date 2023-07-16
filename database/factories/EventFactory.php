@@ -17,7 +17,20 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->generateName(),
+            'date' => $this->faker->dateTimeThisDecade(),
+            'description' => $this->faker->paragraph(3, true),
+            'address' => $this->faker->address(),
         ];
+    }
+
+    private function generateName(): string
+    {
+        $adjective = $this->faker->randomElement(['Amazing', 'Incredible', 'Fantastic', 'Spectacular', 'Unforgettable']);
+        $noun = $this->faker->randomElement(['Concert', 'Festival', 'Gala', 'Expo', 'Conference']);
+        $location = $this->faker->city;
+        
+        $event_name = "$adjective $noun in $location";
+        return $event_name;
     }
 }

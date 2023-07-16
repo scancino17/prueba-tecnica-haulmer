@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            $table->string('status');
+            $table->timestamp('creation_time');
+            $table->timestamp('payment_time')->nullable();
             $table->timestamps();
         });
     }
