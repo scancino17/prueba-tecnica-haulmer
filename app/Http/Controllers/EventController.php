@@ -12,7 +12,7 @@ use App\Http\Resources\EventCollection;
 class EventController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar la lista de eventos en /events
      */
     public function index()
     {
@@ -20,7 +20,7 @@ class EventController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar el evento específico /event/{id}
      */
     public function show(Event $event)
     {

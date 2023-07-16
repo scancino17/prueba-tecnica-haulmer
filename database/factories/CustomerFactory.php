@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class CustomerFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define como crear una instancia de Customer. Se rellenan sus campos con
+     * información generada con faker.
      *
      * @return array<string, mixed>
      */

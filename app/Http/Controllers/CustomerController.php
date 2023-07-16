@@ -11,18 +11,11 @@ use App\Http\Resources\CustomerResource;
 class CustomerController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        return Customer::all();
-    }
-
-    /**
-     * Display the specified resource.
+     * Mostrar las compras del usuario.
      */
     public function show(Customer $order)
     {
+        // Cargar los tickets de las compras (y las compras).
         $order->loadMissing('purchases.tickets');
         return new CustomerResource($order);
     }

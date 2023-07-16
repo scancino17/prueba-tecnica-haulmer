@@ -12,7 +12,10 @@ use App\Models\Purchase;
 class TicketFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define como crear una instancia de Ticket. Se rellenan sus campos con
+     * información generada con faker. Por la forma en que estan estructurados
+     * los factories, esto se encarga de la generación de de Purchases y por lo tanto,
+     * también de Customers.
      *
      * @return array<string, mixed>
      */

@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class EventFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define como crear una instancia de Event. Se rellenan sus campos con
+     * información generada con faker.
      *
      * @return array<string, mixed>
      */
@@ -24,6 +25,11 @@ class EventFactory extends Factory
         ];
     }
 
+    /**
+     * Faker no tiene un método para generar nombres de eventos.
+     * Debo admitir que fue obtenido de ChatGPT y es la unica pieza
+     * de código en la solución que generé con IA.
+     */
     private function generateName(): string
     {
         $adjective = $this->faker->randomElement(['Amazing', 'Incredible', 'Fantastic', 'Spectacular', 'Unforgettable']);

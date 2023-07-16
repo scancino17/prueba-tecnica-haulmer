@@ -1,66 +1,126 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Prueba técnica API PHP Haulmer
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Desarrollo de prueba técnica para postular a practica en Haulmer. Por Sebastián Cancino, Julio 2023.
 
-## About Laravel
+# Instrucciones de uso
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A continuación se define la configuración realizada para configurar el ambiente de desarrollo. Luego, se hace una breve descripción de la configuración de ejecución. Se termina con las instrucciones para ejecutar el sistema.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Configuración del ambiente de desarrollo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+La solución a esta prueba fue desarrollada en un sistema Windows.
 
-## Learning Laravel
+1. Se instaló de forma manual [PHP 8.2.8 NTS](https://windows.php.net/download/).
+2. Se configuró PHP activando las extensiones: `php_fileinfo`, `php_zip` y `php_pdo_sqlite`.
+3. Se instaló [Composer](https://getcomposer.org/download/) en el sistema. 
+4. (Opcional) La instalación de Composer sugiere la instalación de múltiples utilidades, incluyendo Node.js, npm, y herramientas de compilación de Visual Studio 2019.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Es también necesario instalar [Postman](https://www.postman.com/downloads/) en el sistema para ejecutar las pruebas en la API.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Configuración de ambiente de ejecución
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Considerando los alcances y la complejidad de la prueba entregada, se decidió por usar sqlite como base de datos. Esto reduce la cantidad de software requerido para ejecutar la solución y disminuye la cantidad de configuración de entorno de ejecución. 
 
-## Laravel Sponsors
+Para ejecutar el sistema usando sqlite, se debe configurar el fichero `.env`. Aquí se debe reemplazar la línea:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+DB_CONNECTION = mysql 
+```
 
-### Premium Partners
+por
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```
+DB_CONNECTION = sqlite 
+```
 
-## Contributing
+y eliminar las siguientes líneas de configuración de base de datos. Si se desea usar otra base de datos que no sea sqlite, se debe hacer en este lugar la configuración adecuada. 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Una vez configurada la base de datos, es posible iniciarla para ser usada en las pruebas. Para esto, se debe ingresar en la carpeta raíz de la solución el comando 
 
-## Code of Conduct
+```
+> php artisan migrate:fresh --seed
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Con esto el ambiente de ejecución debería estar listo para el correcto funcionamiento de la solución a la prueba.
 
-## Security Vulnerabilities
+## Ejecución de prueba
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Para ejecutar la prueba, se utiliza `artisan` para desplegar un servidor de ambiente de desarrollo. En la carpeta raís de la solución se debe ejecutar el comando
 
-## License
+```
+> php artisan server
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+para desplegar el servidor de depuración. Con la configuración predeterminada el servidor estará disponible en el puerto 8000 de localhost.
+
+En Postman se debe importar la colección incluída en el repositorio. Esta tiene el nombre `coleccion_api.postman_collection.json`. Haciendo click derecho sobre la colección en la lista de la izquierda es posible ejecutar todos los request a la vez, para comprobar resultados.
+
+# Contenido
+
+A continuación se describe de forma general los elementos incluídos en este repositorio.
+
+## Sobre la solución
+
+La solución consta de la gestión de compra de tickets para eventos por parte de los usuarios de la plataforma. Debido a esto, se ha generado una pequeña base de datos con los siguientes modelos:
+
+- El modelo **Customer** representa al usuario en la base de datos. Este contiene información de contacto del usuario y presenta una relación una a muchos con el modelo **Purchase**.
+- El modelo **Purchase** es la representación de una compra dentro del sistema. Esto incluye la fecha de creación de la compra, el estado de esta (si esta por pagar, pagada o cancelada), la fecha de pago de la compra y una foreign key al **Customer** al que pertenece. Esto significa que en teoría este objeto no puede existir sin su respectivo **Customer**. Presenta una relación n es a muchos con **Ticket**.
+- El modelo **Ticket** es la representación de una entrada dentro del sistema. Este incluye el tipo de entrada, el número de asiento y el código de barra. En teoría este objeto tiene una dependencia a **Event**, ya que no puede existir sin este. También una objeto **Ticket** pertenece a un **Purchase**, pero a pesar de esto un ticket puede todavía no estar comprado, por lo que es válido que este valor sea nulo.
+- El modelo **Event** es la representación de un evento dentro del sistema. Se incluye el nombre, la fecha, el lugar y la descripción del evento. Posee una relación uno es a muchos con **Ticket**.
+
+La solución implementa los endpoins `/event/{id}` y `/events` dentro del controlador para eventos (`App\Http\Controllers\EventController`). El endpoint `\purchase` es implementado dentro del controlador para purchases (`App\Http\Controllers\PurchaseController`) y el endpoint `/order` dentro del controlador de usuarios (`App\Http\Controllers\CustomerController`).
+
+La solución implementa lógica adicional para adaptar los nombres de los campos de los modelos de la base de datos a la convención usada en JSON y viceversa. Los campos dentro de la base de datos usan `snake_case` mientras que la convención en JSON es `camelCase`. Esta lógica tambien se encarga de entregar la correcta cantidad de información al momento de listar los eventos. La lógica para adaptar cada modelo puede ser encontrada en `App\Http\Resources`. 
+
+La lógica para gestionar la validación de la entrada de la petición POST se encuentra en `App\Http\Requests\StorePurchaseRequest`. 
+
+La implementación también incluye la definición de la base de datos, la lógica para generar cada modelo y la creación de los elementos con información de muestra en la base de datos. La lógica de cada uno de estos pasos puede ser encontrado por separado en su respectivo migration, factory y seeding, dentro de la carpeta database de la solución.
+
+## Colección de requests en Postman
+
+La colección de requests en Postman incluye requests que demuestran el funcionamiento de los endpoints:
+- Se incluye un caso de demostración del endpoint /events que entrega la lista de eventos y muestra sólamente nombre, fecha y lugar del evento.
+- Se incluye caso de demostración del endpoint /event/{id} que entrega en detalle la información de un sólo evento, incluyendo en este caso la descripción de este.
+- Se incluye un caso de demostración del paso /orders/{id} que entrega una lista que contiene las compras realizadas por el usuario y su ticket correspondiente. 
+- Se incluyen 4 casos de demostración del endpoint /purchase/ que crea una nueva compra para un usuario. En tres de estos caso se ingresa un valor erróneo en alguno de los campos a entregar, con el fin de demostrar validación por parte del backend.
+
+## Demostración
+
+A continuación se presenta la demostración del correcto funcionamiento de la solución.
+
+# Supuestos y fundamentos
+
+A conitnuación se detallan los alcances definidos de la solución a la prueba, las suposiciones realizadas y su fundamento, y formas en que esta prueba podría haber sido mejor ejecutada.
+
+## Alcances y limitaciones
+
+Durante la elaboración de la base de datos, se tomaron un par de decisiones:
+
+- Un usuario podría obtener varios tickets dentro de una sóla compra, por lo que diseñé la base de datos para tener tal relación. Sin embargo, debido a mi conocimiento limitado en el framework, no fui capaz de hacer correctamente esta representación dentro del sistema. La compra de tickets sólo permite la compra de **un** ticket.
+- En este mismo punto, al seedear la base de datos se le otorga un sólo ticket a todas las compras. Mi intención original era hacer esto aleatorio, pero me compliqué al momento de asignar las correspondientes foreign keys.
+- Una implementación más completa podría haber separado en dos modelos un evento y una instancia de él ocurriendo, como por ejemplo un artista que performa en varias noches. En este caso, decidí no complicar más el modelo y asumir que un evento representa también la instancia en la que ocurre.
+- Esta misma idea podría haber sido replicada para tickets y tipos. Por los mismos motivos también se descartó.
+- Debido a límite de tiempo asignado a la actividad, no pude implementar la adaptacion a convención en el elemento ticket del elemento purchase del usuario.
+
+También, con el fin de simplificar la actividades de la solución, se asumieron que los siguientes elementos **no** son necesarios.
+
+- Autenticación y validación de usuarios. 
+- Paginación.
+- Seguridad.
+- Endpoints para mostrar o crear elementos que no se pedían en el enunciado.
+- Las peticiones de compra reciben su hora de creación y pago dentro del sistema, independiente del estado de la compra. Por lo tanto, para crear una compra sólo se necesita entregar una llave a un usuario y a un ticket existentes; y un estado de compra válido para el sistema (creado, pagado, cancelado).
+- Se asume que los tickets son generados junto con el evento, y que estos pertencen a ellos. Hubiese sido más sencillo crear un ticket nuevo para un evento, pero no tiene demasiado sentido. Un evento tiene entradas limitadas.
+
+## Posibles mejoras
+
+Ya que este readme es lo casi lo último que se elabora, ya tengo más experiencia y otras formas de ver la implementación, por lo que es posible hacer algunas observaciones de que se podría haber hecho distinto o algunos lugares a mejorar.
+
+El seeding de la base de datos fue lo primero que implemente y me faltó experiencia con el framework para hacerlo correctamente. Si tuviera la oportunidad de seguir trabajando en esto, sería lo primero que revisaría. Generar correctamente los usuarios, generar tickets que no han sido comprados y generar compras con varios tickets harían la información más cercana a la realidad.
+
+La compra de tickets es otra cosa que mejoraría. Implementaría la funcionalidad para obtener múltiples tickets en una sóla compra y manejaría de mejor manera la definición de la fecha de compra, ya que en estos momentos es rellenada dentro de la aplicación independiente del estado que posea la compra. 
+
+La entrega de la lista de compras podría ser mejor estructurada. Actualmente se entrega un objeto con la lista de con las compras, cuando se podría entregar sólo una lista. 
+
+Al momento de crear una compra, se consulta directamente a los tickets del sistema (no mediante query a la base de dato, si no que a través de la abstracción que ofrece Laravel). Esto claramente rompé encapsulación y separación de responsabilidades, por lo que en caso de refactorizar sería lo primero que cambiaría. Aquí habría que optar por algun patrón de diseño adecuado.
+
+La implementación de paginacion y la filtración de campos serían dos características que optaria a ejecutar si tuviera que extender la solución. Esto quedó fuera debido a alcance y por tiempo.

@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 class StorePurchaseRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * El usuario siempre tiene permiso, no hay validación aquí.
      */
     public function authorize(): bool
     {
@@ -16,7 +16,9 @@ class StorePurchaseRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Define las reglas de validación para la petición POST. Aqui se pide que
+     * se entreguen los campos necesarios para crear la compra y se verifica
+     * que el usuario y el ticket existan en el sistema.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
@@ -29,6 +31,10 @@ class StorePurchaseRequest extends FormRequest
         ];
     }
 
+    /*
+     * Esto transforma los campos recibidos con convención camelCase a la convención
+     * snake_case con la que trabaja la base de datos.
+     */
     protected function prepareForValidation() {
         $this->merge([
             'customer_id' => $this->customerId,

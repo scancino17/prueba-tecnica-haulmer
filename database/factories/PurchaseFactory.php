@@ -11,7 +11,9 @@ use App\Models\Customer;
 class PurchaseFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define como crear una instancia de Purchase. Se rellenan sus campos con
+     * información generada con faker. Acá también se definieron los posibles 
+     * estados y se intenta que la informción generada tenga *algo* de sentido.
      *
      * @return array<string, mixed>
      */

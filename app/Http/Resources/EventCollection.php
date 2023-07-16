@@ -8,7 +8,8 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 class EventCollection extends ResourceCollection
 {
     /**
-     * Transform the resource collection into an array.
+     * Esto esta para poder extender la funcionalidad de EventResource a toda
+     * la lista.
      *
      * @return array<int|string, mixed>
      */

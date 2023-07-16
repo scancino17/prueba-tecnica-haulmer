@@ -9,6 +9,9 @@ class Purchase extends Model
 {
     use HasFactory;
 
+    /*
+     * Estos son los campos que deben ser rellenados al momento de crear una compra.
+     */
     protected $fillable = [
         'customer_id',
         'status',

@@ -10,7 +10,7 @@ use App\Models\Event;
 class EventSeeder extends Seeder
 {
     /**
-     * Run the database seeds.
+     * Esto, ejecutandose "hacia abajo", genera toda la base de datos
      */
     public function run(): void
     {

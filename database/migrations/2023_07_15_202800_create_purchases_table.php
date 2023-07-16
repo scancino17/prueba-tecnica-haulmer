@@ -12,6 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('purchases', function (Blueprint $table) {
+            /* Acá se definen los campos del modelo en la base de datos
+             * También se define que se debería eliminar si desaparece el
+             * customer.
+            */
             $table->id();
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
             $table->string('status');

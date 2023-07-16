@@ -8,7 +8,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class TicketResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Adaptar la salida a convención JSON y limitar campos de salida. 
+     * Esto va junto porque ambas son manipulación de los datos entregados.
      *
      * @return array<string, mixed>
      */

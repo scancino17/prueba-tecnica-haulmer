@@ -7,20 +7,10 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PurchaseController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+/**
+ * Acá se definen las rutas a los endpoints y a que método de qué clase acceden.
+ * Debería ser facil de entender cual corresponde a qué.
+ */
 
 Route::resource('events', EventController::class)->only([
     'index'
@@ -28,10 +18,6 @@ Route::resource('events', EventController::class)->only([
 
 Route::resource('event', EventController::class)->only([
     'show'
-]);
-
-Route::resource('customers', CustomerController::class)->only([
-    'index'
 ]);
 
 Route::resource('orders', CustomerController::class)->only([
