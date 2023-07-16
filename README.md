@@ -89,6 +89,8 @@ La colección de requests en Postman incluye requests que demuestran el funciona
 ## Demostración
 
 A continuación se presenta la demostración del correcto funcionamiento de la solución.
+[Link al video](https://alumnosutalca-my.sharepoint.com/:v:/g/personal/scancino17_alumnos_utalca_cl/EaO4dcFQnIhGrkfZtkZf4fsBcbKhtXi6DsbS-N8NPShXHg?e=v1pRse)
+![Video insertado](https://alumnosutalca-my.sharepoint.com/:v:/g/personal/scancino17_alumnos_utalca_cl/EaO4dcFQnIhGrkfZtkZf4fsBcbKhtXi6DsbS-N8NPShXHg?e=v1pRse)
 
 # Supuestos y fundamentos
 
