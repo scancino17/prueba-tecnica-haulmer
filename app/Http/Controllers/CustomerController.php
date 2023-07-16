@@ -39,7 +39,7 @@ class CustomerController extends Controller
      */
     public function show(Customer $order)
     {
-        $order->loadMissing('purchases');
+        $order->loadMissing('purchases.tickets');
         return new CustomerResource($order);
     }
 

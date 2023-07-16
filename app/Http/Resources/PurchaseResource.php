@@ -19,7 +19,7 @@ class PurchaseResource extends JsonResource
             'status' => $this->status,
             'creationTime' => $this->creation_time,
             'paymentTime' => $this->payment_time,
-            //'tickets' => TicketResource::collection($this->whenLoaded('tickets'))
+            'tickets' => $this->tickets
         ];
     }
 }

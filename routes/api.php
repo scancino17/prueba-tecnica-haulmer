@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,7 @@ Route::resource('orders', CustomerController::class)->only([
     'show'
 ]);
 
-Route::resource('purchase', CustomerController::class)->only([
-    'update'
+Route::resource('purchase', PurchaseController::class)->only([
+    'store'
 ]);
 

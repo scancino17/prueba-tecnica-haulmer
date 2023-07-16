@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePurchaseRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class StorePurchaseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +23,18 @@ class StorePurchaseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'customerId' => ['required', 'exists:customers,id'],
+            'status' => ['required', Rule::in(['creado', 'pagado', 'cancelado'])],
+            'ticketId' => ['required', 'exists:tickets,id']
         ];
+    }
+
+    protected function prepareForValidation() {
+        $this->merge([
+            'customer_id' => $this->customerId,
+            'ticket_id' => $this->ticketId,
+            'creation_time' => $this->creationTime,
+            'payment_time' => $this->paymentTime
+        ]);
     }
 }

@@ -9,6 +9,13 @@ class Purchase extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'customer_id',
+        'status',
+        'creation_time',
+        'payment_time',
+    ];
+
     /*
     Aquí se define la relación de este objeto con Customer.
     Una Purchase sólo pertenece a un Customer, y este sólo existe 
