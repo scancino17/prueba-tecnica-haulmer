@@ -78,11 +78,13 @@ La implementación también incluye la definición de la base de datos, la lógi
 
 ## Colección de requests en Postman
 
+La colección de requets en Postman es incluída en el fichero `coleccion_api.postman_collection.json` encontrado en la carpeta raíz, junto a este readme. Este debe ser importado a Postman.
+
 La colección de requests en Postman incluye requests que demuestran el funcionamiento de los endpoints:
 - Se incluye un caso de demostración del endpoint /events que entrega la lista de eventos y muestra sólamente nombre, fecha y lugar del evento.
-- Se incluye caso de demostración del endpoint /event/{id} que entrega en detalle la información de un sólo evento, incluyendo en este caso la descripción de este.
-- Se incluye un caso de demostración del paso /orders/{id} que entrega una lista que contiene las compras realizadas por el usuario y su ticket correspondiente. 
-- Se incluyen 4 casos de demostración del endpoint /purchase/ que crea una nueva compra para un usuario. En tres de estos caso se ingresa un valor erróneo en alguno de los campos a entregar, con el fin de demostrar validación por parte del backend.
+- Se incluyen dos casos de demostración del endpoint /event/{id} que entrega en detalle la información de un sólo evento, incluyendo en este caso la descripción de este.
+- Se incluyen dos casos de demostración del paso /orders/{id} que entrega una lista que contiene las compras realizadas por el usuario y su ticket correspondiente. 
+- Se incluyen 5 casos de demostración del endpoint /purchase/ que crea una nueva compra para un usuario. En tres de estos caso se ingresa un valor erróneo en alguno de los campos a entregar, con el fin de demostrar validación por parte del backend. Uno de estos casos entrega una petición vacia y otro una petición correcta.
 
 ## Demostración
 
@@ -90,7 +92,7 @@ A continuación se presenta la demostración del correcto funcionamiento de la s
 
 # Supuestos y fundamentos
 
-A conitnuación se detallan los alcances definidos de la solución a la prueba, las suposiciones realizadas y su fundamento, y formas en que esta prueba podría haber sido mejor ejecutada.
+A conitnuación se detallan los alcances definidos de la solución a la prueba, las suposiciones realizadas y su fundamento y formas en que esta prueba podría haber sido mejor ejecutada.
 
 ## Alcances y limitaciones
 
@@ -118,8 +120,6 @@ Ya que este readme es lo casi lo último que se elabora, ya tengo más experienc
 El seeding de la base de datos fue lo primero que implemente y me faltó experiencia con el framework para hacerlo correctamente. Si tuviera la oportunidad de seguir trabajando en esto, sería lo primero que revisaría. Generar correctamente los usuarios, generar tickets que no han sido comprados y generar compras con varios tickets harían la información más cercana a la realidad.
 
 La compra de tickets es otra cosa que mejoraría. Implementaría la funcionalidad para obtener múltiples tickets en una sóla compra y manejaría de mejor manera la definición de la fecha de compra, ya que en estos momentos es rellenada dentro de la aplicación independiente del estado que posea la compra. 
-
-La entrega de la lista de compras podría ser mejor estructurada. Actualmente se entrega un objeto con la lista de con las compras, cuando se podría entregar sólo una lista. 
 
 Al momento de crear una compra, se consulta directamente a los tickets del sistema (no mediante query a la base de dato, si no que a través de la abstracción que ofrece Laravel). Esto claramente rompé encapsulación y separación de responsabilidades, por lo que en caso de refactorizar sería lo primero que cambiaría. Aquí habría que optar por algun patrón de diseño adecuado.
 

@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "7d3e0410-dcf8-4795-afa9-2627dc22f65f",
 		"name": "Colección de pruebas para API",
+		"description": "Aquí se demuestra en funcionamiento de la API.\n\nLa API tiene los siguientes enpoints:\n\n- **GET /events** entrega la información escencial de todos los eventos.\n- **GET /event/{id}** entrega la información detallada del evento con llave _id._\n- **POST /purchase** crea una compra de un usuario sobre el ticket. Espera un objeto json con los campos \"customerId\", que debe ser el id de un Customer existente en la base de datos; \"status\", que debe incluir uno de los siguientes strings \\\\\\['creado', 'pagado', 'cancelado'\\\\\\]; y \"ticketId\" que debe ser el id de un ticket existente en la base de datos. Recibe el Purchase creado de vuelta.\n- **GET /orders/{id}** entrega la lista de todas las compras realizadas por el usuario de llave _id_ y su respectivo ticket.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "28553535"
 	},
@@ -24,12 +25,13 @@
 					"path": [
 						"events"
 					]
-				}
+				},
+				"description": "Obtiene la lista total de eventos. Los eventos incluídos en esta lista no incluyen la descripción del evento."
 			},
 			"response": []
 		},
 		{
-			"name": "GET evento en detalle",
+			"name": "GET evento 1 en detalle",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -47,7 +49,32 @@
 						"event",
 						"1"
 					]
-				}
+				},
+				"description": "Obtiene el event 1 en detalle. Esto incluye toda la información del evento, incluyendo la descripción."
+			},
+			"response": []
+		},
+		{
+			"name": "GET evento 4 en detalle",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/event/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"event",
+						"4"
+					]
+				},
+				"description": "StartFragment\n\nObtiene el event 4 en detalle. Esto incluye toda la información del evento, incluyendo la descripción.\n\nEndFragment"
 			},
 			"response": []
 		},
@@ -70,7 +97,32 @@
 						"orders",
 						"1"
 					]
-				}
+				},
+				"description": "Obtiene la lista de compras del customer 1."
+			},
+			"response": []
+		},
+		{
+			"name": "GET compras de usuario 5",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/orders/5",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"orders",
+						"5"
+					]
+				},
+				"description": "Obtiene la lista de compras del customer 5."
 			},
 			"response": []
 		},
@@ -112,7 +164,51 @@
 					"path": [
 						"purchase"
 					]
+				},
+				"description": "Crea correctamente una nueva compra, asignandole el ticket id = 2 al cliente id = 1. Se puede demostrar el correcto funcionamiento debido al cambio de id del ticket y a la hora de creación."
+			},
+			"response": []
+		},
+		{
+			"name": "POST vacío",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
 				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/purchase",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"purchase"
+					]
+				},
+				"description": "Se hace una petición vacía para demostrar validación."
 			},
 			"response": []
 		},
@@ -154,7 +250,8 @@
 					"path": [
 						"purchase"
 					]
-				}
+				},
+				"description": "Se incluye una petición con status incorrecto para demostrar validación."
 			},
 			"response": []
 		},
@@ -196,7 +293,8 @@
 					"path": [
 						"purchase"
 					]
-				}
+				},
+				"description": "Se incluye una petición con un usuario inexistente par demostar validación."
 			},
 			"response": []
 		},
@@ -238,7 +336,8 @@
 					"path": [
 						"purchase"
 					]
-				}
+				},
+				"description": "Se hace una petición con id de ticket inexistente para demostrar validación."
 			},
 			"response": []
 		}

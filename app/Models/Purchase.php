@@ -21,7 +21,7 @@ class Purchase extends Model
 
     /*
     Aquí se define la relación de este objeto con Customer.
-    Una Purchase sólo pertenece a un Customer, y este sólo existe 
+    Una Purchase sólo pertenece a un Customer y este sólo existe 
     para el Customer.
      */
     public function customer() {

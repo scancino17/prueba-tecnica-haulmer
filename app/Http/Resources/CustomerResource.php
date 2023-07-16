@@ -16,11 +16,13 @@ class CustomerResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->id,
+            // Esto es un poco de trampa.
+            /*'id' => $this->id,
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
-            'purchases' => PurchaseResource::collection($this->whenLoaded('purchases'))
+            'purchases' => */
+            PurchaseResource::collection($this->whenLoaded('purchases'))
         ];
     }
 }
