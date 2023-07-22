@@ -18,6 +18,7 @@ return new class extends Migration
             */
             $table->id();
             $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('ticket_id')->constrained()->cascadeOnDelete();
             $table->string('status');
             $table->timestamp('creation_time');
             $table->timestamp('payment_time')->nullable();

@@ -26,8 +26,11 @@ class StorePurchaseRequest extends FormRequest
     {
         return [
             'customerId' => ['required', 'exists:customers,id'],
+            'instanceId'=> ['required'],
+            'nroTickets' => ['required'],
+            'seatsId' => ['required'],
             'status' => ['required', Rule::in(['creado', 'pagado', 'cancelado'])],
-            'ticketId' => ['required', 'exists:tickets,id']
+            //'ticketId' => ['required', 'exists:tickets,id']
         ];
     }
 
@@ -38,7 +41,10 @@ class StorePurchaseRequest extends FormRequest
     protected function prepareForValidation() {
         $this->merge([
             'customer_id' => $this->customerId,
-            'ticket_id' => $this->ticketId,
+            'event_instance_id' => $this->instanceId,
+            'nro_tickets' => $this->nroTickets,
+            'seats_id' => $this->seatsId,
+            //'ticket_id' => $this->ticketId,
             'creation_time' => $this->creationTime,
             'payment_time' => $this->paymentTime
         ]);

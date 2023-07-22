@@ -9,6 +9,8 @@ class Instance extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nro_tickets'];
+
     public function tickets() {
         return $this->hasMany(Ticket::class);
     }
