@@ -19,9 +19,9 @@ class EventFactory extends Factory
     {
         return [
             'name' => $this->generateName(),
-            'date' => $this->faker->dateTimeThisDecade(),
+            //'date' => $this->faker->dateTimeThisDecade(),
             'description' => $this->faker->paragraph(3, true),
-            'address' => $this->faker->address(),
+            //'address' => $this->faker->address(),
         ];
     }
 

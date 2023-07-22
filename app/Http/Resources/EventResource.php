@@ -21,18 +21,14 @@ class EventResource extends JsonResource
             return [
                 'id' => $this->id,
                 'name' => $this->name,
-                'date' => $this->date,
-                'description' => $this->description,
-                'address' => $this->address
+                'description' => $this->description
             ];
         }
 
         // Si no, omitir descripción.
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'date' => $this->date,
-            'address' => $this->address
+            'name' => $this->name
         ];
     }
 }

@@ -5,19 +5,18 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-use App\Models\Event;
-use App\Models\Instance;
+use App\Models\Venue;
 
-class EventSeeder extends Seeder
+class VenueSeeder extends Seeder
 {
     /**
-     * Esto, ejecutandose "hacia abajo", genera toda la base de datos
+     * Run the database seeds.
      */
     public function run(): void
     {
-        Event::factory()
+        Venue::factory()
             ->count(5)
-            ->hasInstances(1)
+            ->hasSeats(15)
             ->create();
     }
 }
