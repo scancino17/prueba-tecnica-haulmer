@@ -19,8 +19,8 @@ return new class extends Migration
             $table->id();
             $table->string('type');
             $table->string('barcode');
-            $table->string('seat');
-            $table->foreignId('event_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('instance_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('seat_id')->constrained()->cascadeOnDelete();
             $table->foreignId('purchase_id')->nullable();
             $table->timestamps();
         });

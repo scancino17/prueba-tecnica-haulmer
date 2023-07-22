@@ -13,9 +13,15 @@ class Event extends Model
     Define la relación que este objeto tiene con el objeto Purchase.
     Un customer puede tener muchas purchases, 
     así que la relación es n a muchos.
-    */
+
     public function tickets() {
         return $this->hasMany(Ticket::class);
+    }
+
+    */
+    
+    public function instances() {
+        return $this->hasMany(Instance::class);
     }
 
 }

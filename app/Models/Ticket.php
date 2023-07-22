@@ -21,9 +21,17 @@ class Ticket extends Model
     Aquí se define la relación de este objeto con Event.
     Una Ticket sólo pertenece a un Event, y este sólo existe 
     para el Event.
-     */
+
     public function event() {
         return $this->belongsTo(Event::class);
+    }
+     */
+    public function instance() {
+        return $this->belongsTo(Instance::class);
+    }
+
+    public function seat() {
+        return $this->hasOne(Instance::class);
     }
 
 }
